@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:gallery_app/providers/login_provider.dart';
 import 'package:gallery_app/screens/login-screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyGalleryApp());
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider<LoginProvider>(create: (_) => LoginProvider()),
+    ], child: MyGalleryApp()),
+  );
 }
 
 class MyGalleryApp extends StatelessWidget {
