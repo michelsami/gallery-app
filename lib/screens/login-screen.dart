@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gallery_app/screens/upload-image-screen.dart';
 
+import '../data/api/api_result.dart';
+import '../data/api/user_auth_api.dart';
 import '../providers/login_provider.dart';
 
 class Login extends StatefulWidget {
@@ -55,11 +56,10 @@ class _LoginState extends State<Login> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const UploadImageScreen()),
-                      );
+                      Future<APIResult> test = AuthAPILogin()
+                          .authenticateUserLogin(
+                              _emailController.text, _passwordController.text);
+                      print(_passwordController.text);
                     },
                     child: Container(
                       height: 50,
